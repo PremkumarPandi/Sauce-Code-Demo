@@ -1,0 +1,71 @@
+package Shopping;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class AddToCART {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub Premkumar
+		System.setProperty("webdriver.chromedriver", "C:\\Users\\PREM\\Downloads\\chromedriver_win32 (1)\\chromedriver.exe");
+		WebDriver v1=new ChromeDriver();
+		//Google Search
+		v1.get("https://www.google.com/");
+		v1.manage().window().maximize();
+		v1.findElement(By.name("q")).sendKeys("saucedemo" + Keys.ENTER);
+		
+		
+		//saucedemologin page Premkkumar
+		v1.get("https://www.saucedemo.com/v1/");
+		
+		v1.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
+		
+		//Username and Password
+		v1.findElement(By.id("user-name")).sendKeys("standard_user");
+        WebElement N1 = v1.findElement(By.xpath("/html/body/div[2]/div[1]/div/div/form/input[1]"));
+        N1.click();	
+        v1.findElement(By.id("password")).sendKeys("secret_sauce");
+        WebElement N2 = v1.findElement(By.xpath("/html/body/div[2]/div[1]/div/div/form/input[2]"));
+        N2.click();
+        WebElement N3 = v1.findElement(By.id("login-button"));
+        N3.click();
+        
+        //Add To Cart
+        
+        WebElement N4 = v1.findElement(By.xpath("/html/body/div/div[2]/div[2]/div/div[2]/div/div[1]/div[3]/button"));
+        N4.click();
+        WebElement N5 = v1.findElement(By.xpath("/html/body/div/div[2]/div[2]/div/div[2]/div/div[3]/div[3]/button"));
+        N5.click();
+        
+        //click Carts
+        WebElement N6 = v1.findElement(By.xpath("/html/body/div/div[2]/div[1]/div[2]/a/span"));
+        N6.click();
+        
+        //checkOut path
+        WebElement N7 = v1.findElement(By.xpath("/html/body/div/div[2]/div[3]/div/div[2]/a[2]"));
+        N7.click();
+        
+        //Checkout your Information
+        v1.findElement(By.id("first-name")).sendKeys("Prem"+Keys.ENTER);
+        v1.findElement(By.id("last-name")).sendKeys("kumar"+Keys.ENTER);
+        v1.findElement(By.id("postal-code")).sendKeys("625003"+Keys.ENTER);
+        
+        
+        WebElement N8 = v1.findElement(By.xpath("/html/body/div/div[2]/div[3]/div/form/div[2]/input"));
+        N8.click();
+        
+        //Complete The Shopping #Click FINISH
+        WebElement N9 = v1.findElement(By.xpath("//*[@id=\"checkout_summary_container\"]/div/div[2]/div[8]/a[2]"));
+        N9.click();
+        
+        
+        
+
+	}
+
+}
